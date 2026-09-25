@@ -73,7 +73,8 @@ aside { background: var(--panel); border-left: 1px solid var(--line); padding: 4
 aside .count { color: var(--muted); font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; margin: 0 0 14px; }
 aside h2 { font-family: var(--serif); font-weight: 600; font-size: 2rem; line-height: 1.1; margin: 0 0 8px; }
 aside .artist { font-family: var(--serif); font-style: italic; font-size: 1.25rem; margin: 0 0 4px; }
-aside .zh { font-family: "Noto Serif TC", "Songti TC", serif; font-style: normal; color: var(--muted); font-size: 1.05rem; margin: 0 0 8px; }
+aside .zh, aside .ja { font-family: "Noto Serif TC", "Songti TC", serif; font-style: normal; color: var(--muted); font-size: 1.05rem; margin: 0 0 8px; }
+aside .ja { font-family: "Hiragino Mincho ProN", "Noto Serif JP", "Yu Mincho", serif; }
 aside .scrollnote { color: var(--gold); font-size: .85rem; margin: 0 0 20px; }
 aside .meta { color: var(--muted); font-size: .85rem; margin: 0 0 24px; line-height: 1.5; }
 aside .desc { font-size: .98rem; line-height: 1.65; margin: 0 0 20px; }
@@ -102,7 +103,7 @@ aside .hint { color: var(--muted); font-size: .78rem; margin-top: 28px; line-hei
 </head>
 <body>
 <header>
-  <nav class="rooms"><a href="index.html">Floor plan</a> · <a href="renaissance.html">Renaissance</a> · <a href="baroque.html">Baroque & Rococo</a> · <a href="romantic.html">Neoclassical & Romantic</a> · <a href="impressionist.html">Realism & Impressionism</a> | <span>China</span></nav>
+  <nav class="rooms"><a href="index.html">Floor plan</a> · <a href="renaissance.html">Renaissance</a> · <a href="baroque.html">Baroque & Rococo</a> · <a href="romantic.html">Neoclassical & Romantic</a> · <a href="impressionist.html">Realism & Impressionism</a> | <span>China</span> · <a href="japan.html">Japan</a></nav>
   <h1>Sixty Works of Chinese Painting and Calligraphy</h1>
   <div class="filters" role="group" aria-label="Filter">
     <button data-f="all" aria-pressed="true">All 60</button>
@@ -229,8 +230,8 @@ function open(i, push = true) {
   osd.open(p.dzi || { type: 'legacy-image-pyramid', levels: p.levels });
   info.innerHTML = `
     <p class="count">${i + 1} of ${DATA.length} · ${p.region}</p>
-    <h2>${esc(p.title)}</h2>${p.title_zh ? `<p class="zh">${esc(p.title_zh)}</p>` : ''}
-    <p class="artist">${esc(p.artist)}${p.artist_zh ? ` <span class="zh">${esc(p.artist_zh)}</span>` : ''}</p>
+    <h2>${esc(p.title)}</h2>${p.title_zh ? `<p class="zh" lang="zh">${esc(p.title_zh)}</p>` : ''}${p.title_ja ? `<p class="ja" lang="ja">${esc(p.title_ja)}</p>` : ''}
+    <p class="artist">${esc(p.artist)}${p.artist_zh ? ` <span class="zh" lang="zh">${esc(p.artist_zh)}</span>` : ''}${p.artist_ja ? ` <span class="ja" lang="ja">${esc(p.artist_ja)}</span>` : ''}</p>
     <p class="meta">${esc(p.date)}${p.medium ? '<br>' + esc(p.medium) : ''}<br>${esc(p.location)}</p>
     ${p.wide ? `<p class="scrollnote">${p.handscroll ? 'A handscroll, read from right to left. Scroll or swipe to unroll it.' : 'A long work. Scroll or swipe to move along it.'}</p>` : ''}
     <p class="desc">${esc(p.desc)}</p>
