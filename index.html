@@ -24,7 +24,6 @@ html, body { margin: 0; background: var(--bg); color: var(--ink); font-family: v
 h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(2.2rem, 5vw, 3.6rem); margin: 0 0 22px; letter-spacing: .01em; }
 .intro { max-width: 760px; font-size: 1.02rem; line-height: 1.7; margin: 0 0 56px; }
 .intro p { margin: 0 0 14px; }
-.label { font: 500 .75rem var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
 
 /* Floor plan: one outer wall, four rooms, a doorway in each dividing wall */
 .plan { display: grid; grid-template-columns: repeat(4, 1fr); border: 3px solid var(--wall); position: relative; }
@@ -47,17 +46,12 @@ h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(2.2rem, 5vw, 
 .dates { font-size: .9rem; color: var(--ink); margin: 0 0 4px; }
 .count { font-size: .82rem; color: var(--muted); margin: 0; }
 .pic { font-family: var(--serif); font-style: italic; font-size: .98rem; color: var(--muted); margin: 14px 0 0; }
-.entrance { position: absolute; left: calc(12.5% - 45px); bottom: -3px; width: 90px; height: 3px; background: var(--bg); }
-.entrance span { position: absolute; top: 12px; left: 0; right: 0; text-align: center; font: 500 .7rem var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
 
 @media (max-width: 760px) {
   .wrap { padding: 36px 16px 60px; }
   .plan { grid-template-columns: 1fr; }
   .room + .room { border-left: 0; border-top: 3px solid var(--wall); }
   .room + .room::before { left: 50%; top: -3px; width: 64px; height: 3px; margin: 0 0 0 -32px; }
-  .entrance { left: 50%; margin-left: -45px; bottom: auto; top: -3px; }
-  .entrance span { top: auto; bottom: 10px; }
-  .plan { margin-top: 34px; }
   .frame { height: 150px; }
   .frame img { max-height: 150px; }
 }
@@ -68,9 +62,8 @@ h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(2.2rem, 5vw, 
   <h1>Four Rooms of Painting</h1>
   <div class="intro">
     <p>240 paintings from 1400 to 1900, in four rooms of 60. They were picked to show how painting changed over those five centuries.</p>
-    <p>In the 1400s painters learned to make a flat surface look like a window, using perspective and oil paint. In the 1600s they turned to drama, with deep shadows and strong light, while Dutch painters turned to ordinary rooms and people. Around 1800 some painters went back to the calm order of Greece and Rome, and others chased strong feeling and wild nature. By the late 1800s painters had left the studio to paint modern life and passing light, and a picture no longer had to look finished.</p>
+    <p>In the 1400s, the Renaissance brought a renewed interest in ancient Greece and Rome, the human figure, nature, and the world as it actually looked. Painters learned to make a flat surface look like a window, using perspective, realism, and increasingly sophisticated oil paint. In the 1600s, many turned to drama, with deep shadows, strong light, movement, and emotion, while Dutch painters increasingly depicted ordinary rooms, people, landscapes, and everyday life. In the late 1700s and early 1800s, some painters returned to the calm order of ancient Greece and Rome, while others pursued emotion, imagination, and wild nature. By the late 1800s, painters had increasingly left the studio to paint modern life and changing light, and a picture no longer had to look polished or “finished.”</p>
   </div>
-  <p class="label">Floor plan</p>
   <nav class="plan" aria-label="Rooms">
     <a class="room" href="renaissance.html">
       <div class="frame"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg/960px-Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg" alt="The Birth of Venus by Sandro Botticelli" loading="lazy"></div>
@@ -104,7 +97,6 @@ h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(2.2rem, 5vw, 
       <p class="count">60 paintings</p>
       <p class="pic">Impression, Sunrise, Monet</p>
     </a>
-    <div class="entrance" aria-hidden="true"><span>Entrance</span></div>
   </nav>
 </div>
 </body>
