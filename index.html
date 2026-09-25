@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Four Rooms of European Painting</title>
+<title>Five Rooms of Painting</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
@@ -25,8 +25,10 @@ h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(2.2rem, 5vw, 
 .intro { max-width: 760px; font-size: 1.02rem; line-height: 1.7; margin: 0 0 56px; }
 .intro p { margin: 0 0 14px; }
 
-/* Floor plan: one outer wall, four rooms, a doorway in each dividing wall */
-.plan { display: grid; grid-template-columns: repeat(4, 1fr); border: 3px solid var(--wall); position: relative; }
+/* Floor plan: one wing per outer wall, a doorway in each dividing wall; a room is a quarter of the page wide */
+.wing { margin: 0 0 44px; }
+.wing-name { font: 500 .78rem var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--gold); margin: 0 0 12px; }
+.plan { display: grid; grid-template-columns: repeat(var(--n), 1fr); width: calc(100% * var(--n) / 4); border: 3px solid var(--wall); position: relative; }
 .room {
   position: relative; display: flex; flex-direction: column; align-items: center; text-align: center;
   padding: 34px 18px 30px; color: inherit; text-decoration: none; transition: background .25s;
@@ -49,7 +51,7 @@ h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(2.2rem, 5vw, 
 
 @media (max-width: 760px) {
   .wrap { padding: 36px 16px 60px; }
-  .plan { grid-template-columns: 1fr; }
+  .plan { grid-template-columns: 1fr; width: 100%; }
   .room + .room { border-left: 0; border-top: 3px solid var(--wall); }
   .room + .room::before { left: 50%; top: -3px; width: 64px; height: 3px; margin: 0 0 0 -32px; }
   .frame { height: 150px; }
@@ -59,12 +61,15 @@ h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(2.2rem, 5vw, 
 </head>
 <body>
 <div class="wrap">
-  <h1>Four Rooms of European Painting</h1>
+  <h1>Five Rooms of Painting</h1>
   <div class="intro">
-    <p>240 paintings from 1400 to 1900, in four rooms of 60. They were picked to show how European painting changed over those five centuries.</p>
+    <p>300 works in five rooms of 60. Four rooms follow European painting from 1400 to 1900. The fifth opens an East Asia wing with a thousand years of Chinese painting and calligraphy.</p>
     <p>In the 1400s, the Renaissance brought a renewed interest in ancient Greece and Rome, the human figure, nature, and the world as it actually looked. Painters in Italy and Flanders set out to make a flat surface look like a window, using perspective, realism, and increasingly sophisticated oil paint. In the 1600s, many turned to drama, with deep shadows, strong light, movement, and emotion, while Dutch painters increasingly depicted ordinary rooms, people, landscapes, and everyday life. In the late 1700s and early 1800s, some painters returned to the calm order of ancient Greece and Rome, while others pursued emotion, imagination, and wild nature. By the late 1800s, painters had increasingly left the studio to paint modern life and changing light, and a picture no longer had to look polished or “finished.”</p>
+    <p>In China, painting and calligraphy were sister arts, made with the same brush and ink on silk or paper. Many of the greatest works are handscrolls, unrolled an arm’s length at a time from right to left, or hanging scrolls and album leaves. Landscape became the leading subject in the Song dynasty. Later owners added their seals and written comments, so a scroll often carries its own history.</p>
   </div>
-  <nav class="plan" aria-label="Rooms">
+  <section class="wing">
+  <h2 class="wing-name">Europe</h2>
+  <nav class="plan" style="--n:4" aria-label="Europe rooms">
     <a class="room" href="renaissance.html">
       <div class="frame"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg/960px-Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg" alt="The Birth of Venus by Sandro Botticelli" loading="lazy"></div>
       <p class="num">Room 1</p>
@@ -98,6 +103,20 @@ h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(2.2rem, 5vw, 
       <p class="pic">Impression, Sunrise, Monet</p>
     </a>
   </nav>
+  </section>
+  <section class="wing">
+  <h2 class="wing-name">East Asia</h2>
+  <nav class="plan" style="--n:1" aria-label="East Asia rooms">
+    <a class="room" href="china.html">
+      <div class="frame"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/%E8%B0%BF%E5%B1%B1%E8%A1%8C%E6%97%85%E5%9B%BE%E8%BD%B4.%E6%BA%AA%E5%B1%B1%E8%A1%8C%E6%97%85%E5%9B%BE.%E5%AE%8B.%E8%8C%83%E5%AE%BD.%E7%BB%A2%E6%9C%AC%E6%B5%85%E8%AE%BE%E8%89%B2.%E5%8F%B0%E5%8C%97%E6%95%85%E5%AE%AB%E5%8D%9A%E7%89%A9%E9%99%A2%E8%97%8F.jpg/960px-%E8%B0%BF%E5%B1%B1%E8%A1%8C%E6%97%85%E5%9B%BE%E8%BD%B4.%E6%BA%AA%E5%B1%B1%E8%A1%8C%E6%97%85%E5%9B%BE.%E5%AE%8B.%E8%8C%83%E5%AE%BD.%E7%BB%A2%E6%9C%AC%E6%B5%85%E8%AE%BE%E8%89%B2.%E5%8F%B0%E5%8C%97%E6%95%85%E5%AE%AB%E5%8D%9A%E7%89%A9%E9%99%A2%E8%97%8F.jpg" alt="Travelers among Mountains and Streams by Fan Kuan" loading="lazy"></div>
+      <p class="num">Room 5</p>
+      <h2>China</h2>
+      <p class="dates">900–1900</p>
+      <p class="count">60 works</p>
+      <p class="pic">Travelers among Mountains and Streams, Kuan</p>
+    </a>
+  </nav>
+  </section>
 </div>
 </body>
 </html>
