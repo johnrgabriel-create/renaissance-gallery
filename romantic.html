@@ -73,8 +73,9 @@ aside { background: var(--panel); border-left: 1px solid var(--line); padding: 4
 aside .count { color: var(--muted); font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; margin: 0 0 14px; }
 aside h2 { font-family: var(--serif); font-weight: 600; font-size: 2rem; line-height: 1.1; margin: 0 0 8px; }
 aside .artist { font-family: var(--serif); font-style: italic; font-size: 1.25rem; margin: 0 0 4px; }
-aside .zh, aside .ja { font-family: "Noto Serif TC", "Songti TC", serif; font-style: normal; color: var(--muted); font-size: 1.05rem; margin: 0 0 8px; }
+aside .zh, aside .ja, aside .ko { font-family: "Noto Serif TC", "Songti TC", serif; font-style: normal; color: var(--muted); font-size: 1.05rem; margin: 0 0 8px; }
 aside .ja { font-family: "Hiragino Mincho ProN", "Noto Serif JP", "Yu Mincho", serif; }
+aside .ko { font-family: "AppleMyungjo", "Noto Serif KR", "Batang", serif; }
 aside .scrollnote { color: var(--gold); font-size: .85rem; margin: 0 0 20px; }
 aside .meta { color: var(--muted); font-size: .85rem; margin: 0 0 24px; line-height: 1.5; }
 aside .desc { font-size: .98rem; line-height: 1.65; margin: 0 0 20px; }
@@ -82,6 +83,7 @@ aside .look { border-left: 2px solid var(--gold); padding: 2px 0 2px 14px; font-
 aside .look b { display: block; color: var(--gold); font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 4px; }
 aside .links { display: flex; flex-direction: column; gap: 8px; font-size: .88rem; }
 aside .hint { color: var(--muted); font-size: .78rem; margin-top: 28px; line-height: 1.5; }
+aside .credit { color: var(--muted); font-size: .78rem; margin-top: 10px; line-height: 1.5; }
 
 @media (max-width: 800px) {
   header { padding: 32px 16px 12px; }
@@ -103,7 +105,7 @@ aside .hint { color: var(--muted); font-size: .78rem; margin-top: 28px; line-hei
 </head>
 <body>
 <header>
-  <nav class="rooms"><a href="index.html">Floor plan</a> · <a href="renaissance.html">Renaissance</a> · <a href="baroque.html">Baroque & Rococo</a> · <span>Neoclassical & Romantic</span> · <a href="impressionist.html">Realism & Impressionism</a> | <a href="china.html">China</a> · <a href="japan.html">Japan</a></nav>
+  <nav class="rooms"><a href="index.html">Floor plan</a> · <a href="renaissance.html">Renaissance</a> · <a href="baroque.html">Baroque & Rococo</a> · <span>Neoclassical & Romantic</span> · <a href="impressionist.html">Realism & Impressionism</a> | <a href="china.html">China</a> · <a href="japan.html">Japan</a> · <a href="korea.html">Korea</a></nav>
   <h1>Sixty Neoclassical and Romantic Paintings</h1>
   <div class="filters" role="group" aria-label="Filter">
     <button data-f="all" aria-pressed="true">All 60</button>
@@ -230,16 +232,16 @@ function open(i, push = true) {
   osd.open(p.dzi || { type: 'legacy-image-pyramid', levels: p.levels });
   info.innerHTML = `
     <p class="count">${i + 1} of ${DATA.length} · ${p.region}</p>
-    <h2>${esc(p.title)}</h2>${p.title_zh ? `<p class="zh" lang="zh">${esc(p.title_zh)}</p>` : ''}${p.title_ja ? `<p class="ja" lang="ja">${esc(p.title_ja)}</p>` : ''}
-    <p class="artist">${esc(p.artist)}${p.artist_zh ? ` <span class="zh" lang="zh">${esc(p.artist_zh)}</span>` : ''}${p.artist_ja ? ` <span class="ja" lang="ja">${esc(p.artist_ja)}</span>` : ''}</p>
+    <h2>${esc(p.title)}</h2>${p.title_zh ? `<p class="zh" lang="zh">${esc(p.title_zh)}</p>` : ''}${p.title_ja ? `<p class="ja" lang="ja">${esc(p.title_ja)}</p>` : ''}${p.title_ko ? `<p class="ko" lang="ko">${esc(p.title_ko)}</p>` : ''}
+    <p class="artist">${esc(p.artist)}${p.artist_zh ? ` <span class="zh" lang="zh">${esc(p.artist_zh)}</span>` : ''}${p.artist_ja ? ` <span class="ja" lang="ja">${esc(p.artist_ja)}</span>` : ''}${p.artist_ko ? ` <span class="ko" lang="ko">${esc(p.artist_ko)}</span>` : ''}</p>
     <p class="meta">${esc(p.date)}${p.medium ? '<br>' + esc(p.medium) : ''}<br>${esc(p.location)}</p>
     ${p.wide ? `<p class="scrollnote">${p.handscroll ? 'A handscroll, read from right to left. Scroll or swipe to unroll it.' : 'A long work. Scroll or swipe to move along it.'}</p>` : ''}
     <p class="desc">${esc(p.desc)}</p>
     <div class="look"><b>Look for</b>${esc(p.look)}</div>
     <div class="links">
-      <a href="${p.wiki}" target="_blank" rel="noopener">Read more on Wikipedia</a>
-      <a href="${p.commons}" target="_blank" rel="noopener">Full-resolution original</a>
-    </div>
+      ${p.wiki ? `<a href="${p.wiki}" target="_blank" rel="noopener">Read more on Wikipedia</a>` : ''}
+      <a href="${p.commons}" target="_blank" rel="noopener">${p.credit ? 'Image source' : 'Full-resolution original'}</a>
+    </div>${p.credit ? `<p class="credit">Image: ${esc(p.credit)}</p>` : ''}
     <p class="hint">${p.wide ? 'Scroll, swipe or drag to move along the work, pinch or +/− to zoom, ⤢ goes back to the start. Arrow keys move along it; the ‹ › buttons switch works.' : 'Scroll or pinch to zoom, drag to move, double-click to zoom in. Arrow keys switch paintings.'} I hides this panel, F goes full screen, Esc closes.</p>`;
   info.scrollTop = 0;
   if (push) history.pushState({ i }, '', '#' + (i + 1));
