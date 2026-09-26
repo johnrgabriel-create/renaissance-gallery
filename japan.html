@@ -78,6 +78,7 @@ aside .ja { font-family: "Hiragino Mincho ProN", "Noto Serif JP", "Yu Mincho", s
 aside .ko { font-family: "AppleMyungjo", "Noto Serif KR", "Batang", serif; }
 aside .orig { font-family: "Amiri", "Geeza Pro", "Noto Naskh Arabic", serif; font-style: normal; color: var(--muted); font-size: 1.15rem; margin: 0 0 8px; }
 aside .orig.tr { font-family: inherit; font-style: italic; font-size: 1rem; }
+aside .orig.sa, aside .orig.hi, aside .orig.ne, aside .orig.bn, aside .orig.ta, aside .orig.si, aside .orig.bo, aside .orig.ml { font-family: "Kohinoor Devanagari", "Noto Serif Devanagari", "Tamil Sangam MN", "Bangla Sangam MN", "Sinhala Sangam MN", "Malayalam Sangam MN", "Kailasa", serif; font-size: 1.05rem; }
 aside .scrollnote { color: var(--gold); font-size: .85rem; margin: 0 0 20px; }
 aside .meta { color: var(--muted); font-size: .85rem; margin: 0 0 24px; line-height: 1.5; }
 aside .desc { font-size: .98rem; line-height: 1.65; margin: 0 0 20px; }
@@ -107,7 +108,7 @@ aside .credit { color: var(--muted); font-size: .78rem; margin-top: 10px; line-h
 </head>
 <body>
 <header>
-  <nav class="rooms"><a href="index.html">Floor plan</a> · <a href="renaissance.html">Renaissance</a> · <a href="baroque.html">Baroque & Rococo</a> · <a href="romantic.html">Neoclassical & Romantic</a> · <a href="impressionist.html">Realism & Impressionism</a> | <a href="china.html">China</a> · <span>Japan</span> · <a href="korea.html">Korea</a> | <a href="islamic.html">Islamic World</a></nav>
+  <nav class="rooms"><a href="index.html">Floor plan</a> · <a href="renaissance.html">Renaissance</a> · <a href="baroque.html">Baroque & Rococo</a> · <a href="romantic.html">Neoclassical & Romantic</a> · <a href="impressionist.html">Realism & Impressionism</a> | <a href="china.html">China</a> · <span>Japan</span> · <a href="korea.html">Korea</a> | <a href="islamic.html">Islamic World</a> | <a href="india.html">India & South Asia</a></nav>
   <h1>Sixty Works of Japanese Art</h1>
   <div class="filters" role="group" aria-label="Filter">
     <button data-f="all" aria-pressed="true">All 60</button>
@@ -235,8 +236,8 @@ function open(i, push = true) {
   osd.open(p.dzi || { type: 'legacy-image-pyramid', levels: p.levels });
   info.innerHTML = `
     <p class="count">${i + 1} of ${DATA.length} · ${p.region}</p>
-    <h2>${esc(p.title)}</h2>${p.title_zh ? `<p class="zh" lang="zh">${esc(p.title_zh)}</p>` : ''}${p.title_ja ? `<p class="ja" lang="ja">${esc(p.title_ja)}</p>` : ''}${p.title_ko ? `<p class="ko" lang="ko">${esc(p.title_ko)}</p>` : ''}${p.title_orig ? `<p class="orig ${p.lang_orig}" lang="${p.lang_orig}" dir="${p.lang_orig === 'tr' ? 'ltr' : 'rtl'}">${esc(p.title_orig)}</p>` : ''}
-    <p class="artist">${esc(p.artist)}${p.artist_zh ? ` <span class="zh" lang="zh">${esc(p.artist_zh)}</span>` : ''}${p.artist_ja ? ` <span class="ja" lang="ja">${esc(p.artist_ja)}</span>` : ''}${p.artist_ko ? ` <span class="ko" lang="ko">${esc(p.artist_ko)}</span>` : ''}${p.artist_orig ? ` <span class="orig ${p.lang_orig}" lang="${p.lang_orig}" dir="${p.lang_orig === 'tr' ? 'ltr' : 'rtl'}">${esc(p.artist_orig)}</span>` : ''}</p>
+    <h2>${esc(p.title)}</h2>${p.title_zh ? `<p class="zh" lang="zh">${esc(p.title_zh)}</p>` : ''}${p.title_ja ? `<p class="ja" lang="ja">${esc(p.title_ja)}</p>` : ''}${p.title_ko ? `<p class="ko" lang="ko">${esc(p.title_ko)}</p>` : ''}${p.title_orig ? `<p class="orig ${p.lang_orig}" lang="${p.lang_orig}" dir="${['ar', 'fa', 'ur'].includes(p.lang_orig) ? 'rtl' : 'ltr'}">${esc(p.title_orig)}</p>` : ''}
+    <p class="artist">${esc(p.artist)}${p.artist_zh ? ` <span class="zh" lang="zh">${esc(p.artist_zh)}</span>` : ''}${p.artist_ja ? ` <span class="ja" lang="ja">${esc(p.artist_ja)}</span>` : ''}${p.artist_ko ? ` <span class="ko" lang="ko">${esc(p.artist_ko)}</span>` : ''}${p.artist_orig ? ` <span class="orig ${p.lang_orig}" lang="${p.lang_orig}" dir="${['ar', 'fa', 'ur'].includes(p.lang_orig) ? 'rtl' : 'ltr'}">${esc(p.artist_orig)}</span>` : ''}</p>
     <p class="meta">${esc(p.date)}${p.medium ? '<br>' + esc(p.medium) : ''}<br>${esc(p.location)}</p>
     ${p.wide ? `<p class="scrollnote">${p.handscroll ? 'A handscroll, read from right to left. Scroll or swipe to unroll it.' : 'A long work. Scroll or swipe to move along it.'}</p>` : ''}
     <p class="desc">${esc(p.desc)}</p>
